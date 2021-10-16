@@ -93,4 +93,16 @@ class UserController extends Controller
       ]);
     }
   }
+
+  public function getOtherUser(Request $request){
+    $users = User::where('id', '!=', Auth::user()->id)->get();
+
+     return response()->json([
+        'success' => true,
+        'message' => 'Users fetched successfully',
+        'data' => $users,
+    ]);
+
+
+  }
 }
