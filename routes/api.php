@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\TransactionController;
 
 
 /*
@@ -31,6 +32,10 @@ Route::group(['prefix' => 'v1'], function () {
         Route::post('/account', [AccountController::class, 'create']);
         Route::post('/topup', [AccountController::class, 'topUp']);
         Route::post('/payment', [AccountController::class, 'payment']);
+
+        Route::get('/transaction', [TransactionController::class, 'index']);
+        Route::get('/failed-transaction', [TransactionController::class, 'failedTrans']);
+        Route::get('/success-transaction', [TransactionController::class, 'successTrans']);
     });
 });
 
